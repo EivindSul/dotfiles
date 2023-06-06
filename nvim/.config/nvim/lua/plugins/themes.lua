@@ -16,6 +16,8 @@ return {
 
 	"mhartington/oceanic-next",
 
+	"sainnhe/gruvbox-material",
+	
 	"sainnhe/everforest",
 
 	"savq/melange-nvim"

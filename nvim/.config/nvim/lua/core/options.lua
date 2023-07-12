@@ -6,6 +6,9 @@ local opts = {
 	termguicolors = true,
 	number = true,
 	relativenumber = true,
+
+	winblend = 0,
+	pumblend = 20,
 }
 
 -- Set options from table

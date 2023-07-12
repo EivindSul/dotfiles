@@ -6,3 +6,8 @@ require("core.keymaps")
 
 -- Other options
 require("core.options")
+
+-- Neovide config
+if vim.g.neovide then
+    require("core.neovide")
+end

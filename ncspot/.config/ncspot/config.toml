@@ -1,0 +1,23 @@
+[track_format]
+left = "%title" 
+center = "%artists"
+right = "%saved %duration"
+
+[theme]
+# background = "black"
+primary = "light white"
+secondary = "light black"
+title = "#1ED760"
+playing = "#1ED760"
+playing_selected = "#1ED760"
+# playing_bg = "black"
+highlight = "light white"
+highlight_bg = "#484848"
+error = "light white"
+error_bg = "red"
+statusbar = "black"
+statusbar_progress = "#00AC4C"
+statusbar_bg = "#00AC4C"
+cmdline = "#CBFFDE"
+cmdline_bg = "#444444"
+search_match = "light red"

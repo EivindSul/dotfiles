@@ -1,0 +1,7 @@
+source ~/.config/zsh/path.sh
+source ~/.config/zsh/core.sh
+source ~/.config/zsh/omz.sh
+source ~/.config/zsh/variables.sh
+source ~/.config/zsh/aliases.sh
+source ~/.config/zsh/functions.sh
+

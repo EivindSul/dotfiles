@@ -1,4 +1,4 @@
-@theme "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"
+//@theme "/usr/share/rofi/themes/gruvbox-dark-soft.rasi"
 
 configuration {
 /*	modes: "window,combi";*/
@@ -151,3 +151,8 @@ configuration {
       sorting-method:    "name";
   }
 }
+//@theme "/home/eivind/.local/share/rofi/themes/squared-everforest.rasi"
+//@theme "/home/eivind/.local/share/rofi/themes/spotlight-dark.rasi"
+//@theme "/home/eivind/.local/share/rofi/themes/squared-everforest.rasi"
+//@theme "/home/eivind/.local/share/rofi/themes/squared-material-red.rasi"
+@theme "/home/eivind/.local/share/rofi/themes/squared-everforest-lekton.rasi"

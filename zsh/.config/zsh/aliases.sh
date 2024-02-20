@@ -9,3 +9,5 @@ alias cp="cp -i"
 alias vim=nvim
 alias diskusage=ncdu
 alias py="python3"
+
+alias linalg="open ~/Documents/uib/6sem/mat121/linalg.pdf"

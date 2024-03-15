@@ -258,35 +258,21 @@ ui {
 // For more examples, see: https://github.com/zellij-org/zellij/tree/main/example/themes
 // Once these themes are defined, one of them should to be selected in the "theme" section of this file
 
-themes {
-    dracula {
-        fg 248 248 242
-        bg 40 42 54
-        red 255 85 85
-        green 80 250 123
-        yellow 241 250 140
-        blue 98 114 164
-        magenta 255 121 198
-        orange 255 184 108
-        cyan 139 233 253
-        black 0 0 0
-        white 255 255 255
-    }
-    everforest {
-        fg 211 198 170 // #d3c6aa
-        // fg 167 192 128 // #a7c080
-        bg 45 53 59 // #2d353b
-        red 230 126 128 // #e67e80
-        green 167 192 128 // #a7c080
-        yellow 219 188 127 // #dbbc7f
-        blue 127 187 179 // #7fbbb3
-        magenta 214 153 182 // #d699b6
-        orange 230 152 117 // #e69875
-        cyan 131 192 146 // #83c092
-        black 35 42 46 // #232a2e
-        white 211 198 170 // #d3c6aa
-    }
-}
+// themes {
+//    dracula {
+//        fg 248 248 242
+//        bg 40 42 54
+//        red 255 85 85
+//        green 80 250 123
+//        yellow 241 250 140
+//        blue 98 114 164
+//        magenta 255 121 198
+//        orange 255 184 108
+//        cyan 139 233 253
+//        black 0 0 0
+//        white 255 255 255
+//    }
+// }
 
 // Choose the theme that is specified in the themes section.
 // Default: default

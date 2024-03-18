@@ -15,7 +15,8 @@ themes {
     everforest {
         fg 211 198 170 // #d3c6aa
         // fg 167 192 128 // #a7c080
-        bg 45 53 59 // #2d353b
+        // bg 45 53 59 // #2d353b
+        bg 61 48 77 // #3D484D
         red 230 126 128 // #e67e80
         green 167 192 128 // #a7c080
         yellow 219 188 127 // #dbbc7f

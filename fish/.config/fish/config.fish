@@ -15,3 +15,4 @@ else
 end
 # <<< conda initialize <<<
 
+starship init fish | source

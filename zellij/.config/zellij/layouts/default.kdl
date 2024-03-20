@@ -3,7 +3,7 @@ layout {
         children
             pane size=1 borderless=true {
                 plugin location="file:$HOME/.config/zellij/plugins/zjstatus.wasm" {
-                    format_left   "{mode} #[fg=#4F585E,bold]{session}"
+                    format_left   "{mode} #[fg=#4F585E,bold]{session} "
                     format_center "{tabs}"
                     format_right  "{command_battery} {command_git_branch} {datetime}"
                     format_space  ""
@@ -15,23 +15,33 @@ layout {
 
                     hide_frame_for_single_pane "true "
 
+                    mode_locked        "#[fg=#3D484D] {name} "
                     mode_normal        "#[fg=#a7c080] {name} "
-                    mode_locked        "#[fg=#a7c080] {name} "
-                    mode_pane          "#[fg=#e69875, bold] {name} "
-                    mode_resize        "#[fg=#e69875, bold] {name} "
-                    mode_pane          "#[fg=#e69875, bold] {name} "
-                    mode_tab           "#[fg=#e69875, bold] {name} "
-                    mode_scroll        "#[fg=#e69875, bold] {name} "
-                    mode_enter_search  "#[fg=#e69875, bold] {name} "
-                    mode_search        "#[fg=#e69875, bold] {name} "
-                    mode_session       "#[fg=#e69875, bold] {name} "
-                    mode_move          "#[fg=#e69875, bold] {name} "
-                    mode_prompt        "#[fg=#e67e80, bold] {name} "
-                    mode_rename_tab    "#[fg=#e67e80, bold] {name} "
-                    mode_rename_pane   "#[fg=#e67e80, bold] {name} "
+                    mode_tmux          "#[fg=#e69875, bold] Zellij "
+                    mode_pane          "#[fg=#e67e80, bold] {name} "
+                    mode_tab           "#[fg=#e67e80, bold] {name} "
+                    mode_move          "#[fg=#e67e80, bold] g-mode "
+                    mode_scroll        "#[fg=#d699b6, bold] {name} "
+                    mode_enter_search  "#[fg=#d699b6, bold] {name} "
+                    mode_search        "#[fg=#d699b6, bold] {name} "
+                    mode_prompt        "#[fg=#d699b6, bold] {name} "
+                    mode_rename_tab    "#[fg=#d699b6, bold] {name} "
+                    mode_rename_pane   "#[fg=#d699b6, bold] {name} "
 
-                    tab_normal   "#[fg=#3D484D,italic] {name} "
-                    tab_active   "#[fg=#dbbc7f,bold] {name} "
+                    mode_resize        "#[fg=#d699b6, bold] {name} "
+                    mode_session       "#[fg=#d699b6, bold] {name} "
+
+                    tab_normal              "#[fg=#3D484D,italic] {name} "
+                    tab_normal_fullscreen   "#[fg=#3D484D,italic] {name} "
+                    tab_normal_sync         "#[fg=#3D484D,italic] {name} {sync_indicator} "
+
+                    tab_active              "#[fg=#dbbc7f,bold] {name} "
+                    tab_active_fullscreen   "#[fg=#dbbc7f,bold] {name} {fullscreen_indicator}"
+                    tab_active_sync         "#[fg=#dbbc7f,bold] {name} {sync_indicator}"
+
+                    tab_sync_indicator       "<S> "
+                    tab_fullscreen_indicator "[F] "
+                    tab_floating_indicator   "(W) "
 
                     command_git_branch_command     "git rev-parse --abbrev-ref HEAD"
                     command_git_branch_format      "#[fg=blue] {stdout} "

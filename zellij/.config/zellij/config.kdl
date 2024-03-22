@@ -10,37 +10,6 @@
 
 keybinds clear-defaults=true {
 
-    ////////// normal mode //////////
-
-    // This mode serves as the default mode. It has quick binds for changing
-    // tabs, panes and running code, but tries to avoid conflicting binds.
-
-    // Ctrl+g -> Change to locked mode
-    // Ctrl+b -> Change to tmux mode
-    // Alt+hjkl -> Change pane focus
-
-    normal {
-        bind "Alt h" { MoveFocusOrTab "Left"; }
-        bind "Alt l" { MoveFocusOrTab "Right"; }
-        bind "Alt j" { MoveFocus "Down"; }
-        bind "Alt k" { MoveFocus "Up"; }
-        bind "Alt t" { MoveFocus "Up"; }
-        bind "Alt 1" { GoToTab 1; }
-        bind "Alt 2" { GoToTab 2; }
-        bind "Alt 3" { GoToTab 3; }
-        bind "Alt 4" { GoToTab 4; }
-        bind "Alt 5" { GoToTab 5; }
-        bind "Alt 6" { GoToTab 6; }
-        bind "Alt 7" { GoToTab 7; }
-        bind "Alt 8" { GoToTab 8; }
-        bind "Alt 9" { GoToTab 9; }
-
-        // TODO:
-        // Create runner binds
-    }
-
-
-
     ////////// locked mode: ctrl+g //////////
 
     // This mode serves as the safe mode. It completely avoids conflicting binds, except Ctrl+g.
@@ -52,6 +21,41 @@ keybinds clear-defaults=true {
     }
 
 
+    ////////// normal mode //////////
+
+    // This mode serves as the default mode. It has quick binds for changing
+    // tabs, panes and running code, but tries to avoid conflicting binds.
+
+    // Ctrl+g -> Change to locked mode
+    // Ctrl+b -> Change to tmux mode
+    // Alt+hjkl -> Change pane focus
+
+    normal {
+        bind "Ctrl q" { GoToPreviousTab; }
+        bind "Ctrl e" { GoToNextTab; }
+
+        bind "Alt h" { MoveFocusOrTab "Left"; }
+        bind "Alt l" { MoveFocusOrTab "Right"; }
+        bind "Alt j" { MoveFocus "Down"; }
+        bind "Alt k" { MoveFocus "Up"; }
+        bind "Alt 1" { GoToTab 1; }
+        bind "Alt 2" { GoToTab 2; }
+        bind "Alt 3" { GoToTab 3; }
+        bind "Alt 4" { GoToTab 4; }
+        bind "Alt 5" { GoToTab 5; }
+        bind "Alt 6" { GoToTab 6; }
+        bind "Alt 7" { GoToTab 7; }
+        bind "Alt 8" { GoToTab 8; }
+        bind "Alt 9" { GoToTab 9; }
+
+        bind "Alt f" { ToggleFocusFullscreen; }
+
+        // TODO:
+        // Create runner binds
+    }
+
+
+
     ////////// tmux mode: Ctrl+b //////////
     ///// ( Eventually Ctrl+Space ) ///////
 
@@ -59,27 +63,15 @@ keybinds clear-defaults=true {
     // It does not return to normal mode by itself. It is meant as an editing mode, which is exited
     // once the setup is configured to my liking.
 
-    // Ctrl+g -> Change to locked mode
-    // Esc -> Change to normal mode
-    // hjkl -> switch pane
-    // w -> floating pane
-    // d -> detach
-    // o -> session manager
-    // f -> toggle fullscreen
-    // s -> toggle tab sync
-    // 1,2,3,4,5,6,7,8,9 -> Go to tab
-    // Tab -> ToggleTab
-
     tmux {
-        // Go to other modes:
-        bind "g" { SwitchToMode "move"; }
-        bind "p" { SwitchToMode "pane"; }
-        bind "t" { SwitchToMode "tab"; }
+        ////////// MODES \\\\\\\\\\
+        bind "Ctrl q" { Quit; }
 
-        bind "f" { ToggleFocusFullscreen; }
-        bind "s" { ToggleActiveSyncTab; }
-        bind "x" { CloseFocus; }
+        bind "f" { ToggleFocusFullscreen; SwitchToMode "Normal"; }
+        bind "S" { ToggleActiveSyncTab; SwitchToMode "Normal"; }
         bind "w" { ToggleFloatingPanes; SwitchToMode "Normal"; }
+
+        ////////// TABS \\\\\\\\\\
 
         bind "1" { GoToTab 1; }
         bind "2" { GoToTab 2; }
@@ -90,54 +82,30 @@ keybinds clear-defaults=true {
         bind "7" { GoToTab 7; }
         bind "8" { GoToTab 8; }
         bind "9" { GoToTab 9; }
-        bind "Tab" { ToggleTab; }
+        bind "Tab" { ToggleTab; SwitchToMode "Normal"; }
+        bind "n" { NewTab; SwitchToMode "Normal"; }
 
-        bind "d" { Detach; }
-        bind "o" {
-            LaunchOrFocusPlugin "zellij:session-manager" {
-                floating true
-                    move_to_focused_tab true
-            };
-            SwitchToMode "Normal"
-        }
-    }
-     
-    ////////// g mode: g //////////
-    // Esc -> Change to normal mode
-    // Ctrl+g -> Change to locked mode
-    // t -> go to next tab
-    // T -> go to previous tab
-    // b -> BreakPaneRight
-    // B -> BreakPaneLeft
-    // hjkl -> swap layouts?
+        bind "b" { BreakPaneRight; SwitchToMode "Normal"; }
+        bind "B" { BreakPaneLeft; SwitchToMode "Normal"; }
 
-    move { 
-        // This is g mode
+        bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
+        bind "X" { CloseTab; SwitchToMode "Normal"; }
 
-        bind "t" { GoToNextTab; SwitchToMode "Tmux"; }
-        bind "T" { GoToPreviousTab; SwitchToMode "Tmux"; }
+        ////////// PANES \\\\\\\\\\
 
-        bind "b" { BreakPaneRight; SwitchToMode "Tmux"; }
-        bind "B" { BreakPaneLeft; SwitchToMode "Tmux"; }
-    }
+        bind "R" { SwitchToMode "RenamePane"; PaneNameInput 0;}
+        bind "x" { CloseFocus; SwitchToMode "Normal"; }
 
-     
+        bind "s" { NewPane "Down"; SwitchToMode "Normal"; }
+        bind "v" { NewPane "Right"; SwitchToMode "Normal"; }
 
-    ////////// pane mode: p //////////
-    // Esc -> Change to normal mode
-    // Ctrl+g -> Change to locked mode
-    // hjkl -> Grow in direction
-    // HJKL -> Shrink in direction
-    // alt+hjkl -> Move pane
-    // r -> rename pane
-    // s -> new split down
-    // v -> new split right
-    // n -> new split in order of layout
-    // TODO:
-    // Better support for floating panes, and embed
+        bind "w" { ToggleFloatingPanes; SwitchToMode "Normal"; }
+        bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Normal"; }
 
-    pane {
-        bind "Enter" "Esc" { SwitchToMode "Tmux"; }
+        bind "Alt h" { MoveFocusOrTab "Left"; }
+        bind "Alt l" { MoveFocusOrTab "Right"; }
+        bind "Alt j" { MoveFocus "Down"; }
+        bind "Alt k" { MoveFocus "Up"; }
 
         bind "h" { Resize "Increase Left"; }
         bind "j" { Resize "Increase Down"; }
@@ -148,41 +116,25 @@ keybinds clear-defaults=true {
         bind "K" { Resize "Decrease Up"; }
         bind "L" { Resize "Decrease Right"; }
 
-        bind "Alt h" "Left" { MovePane "Left"; }
-        bind "Alt j" "Down" { MovePane "Down"; }
-        bind "Alt k" "Up" { MovePane "Up"; }
-        bind "Alt l" "Right" { MovePane "Right"; }
+        bind "Ctrl h" "Left" { MovePane "Left"; }
+        bind "Ctrl j" "Down" { MovePane "Down"; }
+        bind "Ctrl k" "Up" { MovePane "Up"; }
+        bind "Ctrl l" "Right" { MovePane "Right"; }
 
-        bind "r" { SwitchToMode "RenamePane"; PaneNameInput 0;}
-        bind "s" { NewPane "Down"; SwitchToMode "Tmux"; }
-        bind "v" { NewPane "Right"; SwitchToMode "Tmux"; }
+        ////////// SESSION \\\\\\\\\\
 
-        bind "x" { CloseFocus; SwitchToMode "Tmux"; }
+        bind "Ctrl d" { Detach; }
+        bind "o" {
+            LaunchOrFocusPlugin "zellij:session-manager" {
+                floating true
+                    move_to_focused_tab true
+            };
+            SwitchToMode "Normal"
+        }
 
-        // TODO: Floating panes
-        bind "w" { ToggleFloatingPanes; SwitchToMode "Normal"; }
-        bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Normal"; }
     }
+
      
-    ////////// tab mode: t //////////
-    // Esc -> Change to normal mode
-    // Ctrl+g -> Change to locked mode
-    // h/l -> Change tab in direction
-    // H/L -> Move tab in direction TODO
-
-    // r -> rename tab
-    // x -> close tab
-    // n -> create new tab
-
-    tab {
-        bind "Enter" "Esc" { SwitchToMode "Tmux"; }
-        bind "h" { GoToPreviousTab; }
-        bind "l" { GoToNextTab; }
-
-        bind "r" { SwitchToMode "RenameTab"; TabNameInput 0; }
-        bind "x" { CloseTab; SwitchToMode "Tmux"; }
-        bind "n" { NewTab; SwitchToMode "Tmux"; }
-    }
 
     ////////// SCROLL AND SEARCH MODES //////////
     //// These modes are left as they were, /////
@@ -236,14 +188,21 @@ keybinds clear-defaults=true {
     session {
     // UNUSED 
     }
-
     resize {
-    //  UNUSED
+    // UNUSED
+    }
+    move { 
+    // UNUSED
+    }
+    pane {
+    // UNUSED
+    }
+    tab {
+    // UNUSED
     }
      
     shared_except "locked" {
         bind "Ctrl g" { SwitchToMode "Locked"; }
-        bind "Ctrl q" { Quit; }
 
         // TODO: Create swap layouts and binds to use them
         // bind "Alt [" { PreviousSwapLayout; }
@@ -255,24 +214,6 @@ keybinds clear-defaults=true {
     shared_except "tmux" "locked" {
         bind "Ctrl b" { SwitchToMode "Tmux"; }
     }
-    // shared_except "pane" "locked" {
-    //     bind "Ctrl p" { SwitchToMode "Pane"; }
-    // }
-    // shared_except "resize" "locked" {
-    //     bind "Ctrl n" { SwitchToMode "Resize"; }
-    // }
-    // shared_except "scroll" "locked" {
-    //     bind "Ctrl s" { SwitchToMode "Scroll"; }
-    // }
-    // shared_except "session" "locked" {
-    //     bind "Ctrl o" { SwitchToMode "Session"; }
-    // }
-    // shared_except "tab" "locked" {
-    //     bind "Ctrl t" { SwitchToMode "Tab"; }
-    // }
-    // shared_except "move" "locked" {
-    //     bind "Ctrl h" { SwitchToMode "Move"; }
-    // }
 }
 
 plugins {

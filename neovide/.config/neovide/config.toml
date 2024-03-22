@@ -1,0 +1,7 @@
+multigrid = true
+frame = "Full"
+vsync = true
+maximized = false
+srgb = false
+idle = true
+neovim_bin = "/usr/bin/nvim"

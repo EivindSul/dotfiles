@@ -47,6 +47,7 @@ return {
 					"jdtls",  -- Java
 					"tsserver",  -- Javascript, typescript
 					"eslint",  -- Javascript, typescript
+					"gopls",  -- Go
 					-- UNUSED
 					-- "pylsp",  -- Python
 					-- "hls",    -- Haskell

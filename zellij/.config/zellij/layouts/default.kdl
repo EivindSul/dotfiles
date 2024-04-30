@@ -48,6 +48,11 @@ layout {
                     command_git_branch_interval    "10"
                     command_git_branch_rendermode  "static"
 
+                    // command_battery_command     "sh -c \"acpi -b | awk '{print $4}' | tr -d ','\""
+                    // command_battery_format      "#[fg=#4F585E] {stdout} "
+                    // command_battery_interval    "30"
+                    // command_battery_rendermode  "static"
+
                     datetime        "#[fg=#4F585E,bold] {format} "
                     datetime_format "%H:%M"
                     datetime_timezone "Europe/Oslo"

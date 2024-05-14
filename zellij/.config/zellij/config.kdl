@@ -56,8 +56,7 @@ keybinds clear-defaults=true {
 
 
 
-    ////////// tmux mode: Ctrl+b //////////
-    ///// ( Eventually Ctrl+Space ) ///////
+    ////////// tmux mode: Ctrl+Space //////////
 
     // This mode serves as the modifying mode. It is meant to do simple, quick changes to the setup.
     // It does not return to normal mode by itself. It is meant as an editing mode, which is exited
@@ -120,6 +119,13 @@ keybinds clear-defaults=true {
         bind "Ctrl j" "Down" { MovePane "Down"; }
         bind "Ctrl k" "Up" { MovePane "Up"; }
         bind "Ctrl l" "Right" { MovePane "Right"; }
+
+        ///////// SCROLLBACK \\\\\\\\\
+
+        bind "Ctrl s" { SwitchToMode "Scroll"; }
+
+        // Then s again to search,
+        // or e to edit scrollback.
 
         ////////// SESSION \\\\\\\\\\
 

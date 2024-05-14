@@ -142,7 +142,11 @@ keybinds clear-defaults=true {
 
         bind "g" {
             Run "lazygit" {
-                floating true
+                floating true 
+                x "10%"
+                y "10%"
+                width "80%"
+                height "80%"
             };
             SwitchToMode "Normal"
         }

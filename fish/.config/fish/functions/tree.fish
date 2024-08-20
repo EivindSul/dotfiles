@@ -1,4 +1,4 @@
-function tree --wraps='exa --tree' --description 'alias tree exa --tree'
-  exa --tree $argv
+function tree --wraps='eza --tree' --description 'alias tree eza --tree'
+  eza --tree $argv
         
 end

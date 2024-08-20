@@ -1,4 +1,4 @@
-function ll --wraps=ls --wraps='exa -l' --description 'alias ll exa -l'
-  exa -l $argv
+function ll --wraps=ls --wraps='eza -l' --description 'alias ll eza -l'
+  eza -l $argv
         
 end

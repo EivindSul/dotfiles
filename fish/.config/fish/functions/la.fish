@@ -1,4 +1,4 @@
-function la --wraps='exa -la' --description 'alias la exa -la'
-  exa -la $argv
+function la --wraps='eza -la' --description 'alias la eza -la'
+  eza -la $argv
         
 end

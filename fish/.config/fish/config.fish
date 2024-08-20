@@ -16,3 +16,4 @@ set -x CARGO_HOME ~/programs/cargo
 set -x GOPATH ~/programs/go
 set -x EDITOR nvim
 set -x VISUAL nvim
+set -x MANPAGER "nvim +Man!"

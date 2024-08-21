@@ -15,13 +15,13 @@
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-data.location=/home/eivind/.task
+# data.location=/home/eivind/.local/share/task
 
 # To use the default location of the XDG directories,
 # move this configuration file from ~/.taskrc to ~/.config/task/taskrc and uncomment below
 
-#data.location=~/.local/share/task
-#hooks.location=~/.config/task/hooks
+data.location=~/.local/share/task
+hooks.location=~/.config/task/hooks
 
 # Color theme (uncomment one to use)
 #include light-16.theme
@@ -39,3 +39,4 @@ data.location=/home/eivind/.task
 #include solarized-light-256.theme
 #include no-color.theme
 
+weekstart=monday

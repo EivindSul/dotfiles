@@ -84,6 +84,9 @@ keybinds clear-defaults=true {
         bind "Tab" { ToggleTab; SwitchToMode "Normal"; }
         bind "n" { NewTab; SwitchToMode "Normal"; }
 
+        bind "q" { MoveTab "left"; }
+        bind "e" { MoveTab "right"; }
+
         bind "b" { BreakPaneRight; SwitchToMode "Normal"; }
         bind "B" { BreakPaneLeft; SwitchToMode "Normal"; }
 
@@ -160,6 +163,9 @@ keybinds clear-defaults=true {
 
     scroll {
         bind "Ctrl s" { SwitchToMode "Normal"; }
+        bind "q" { SwitchToMode "Normal"; }
+        bind "Ctrl q" { SwitchToMode "Normal"; GoToPreviousTab; }
+        bind "Ctrl e" { SwitchToMode "Normal"; GoToNextTab; }
         bind "e" { EditScrollback; SwitchToMode "Normal"; }
         bind "s" { SwitchToMode "EnterSearch"; SearchInput 0; }
         bind "Ctrl c" { ScrollToBottom; SwitchToMode "Normal"; }

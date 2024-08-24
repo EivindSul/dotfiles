@@ -102,7 +102,7 @@ keybinds clear-defaults=true {
         bind "v" { NewPane "Right"; SwitchToMode "Normal"; }
 
         bind "w" { ToggleFloatingPanes; SwitchToMode "Normal"; }
-        bind "e" { TogglePaneEmbedOrFloating; SwitchToMode "Normal"; }
+        bind "E" { TogglePaneEmbedOrFloating; SwitchToMode "Normal"; }
 
         bind "Alt h" { MoveFocusOrTab "Left"; }
         bind "Alt l" { MoveFocusOrTab "Right"; }

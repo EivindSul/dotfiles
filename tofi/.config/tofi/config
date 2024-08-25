@@ -1,0 +1,9 @@
+font=/home/eivind/.local/share/fonts/LektonNerdFont-Regular.ttf
+
+drun-launch=true
+
+border-width=0
+
+outline-width=0
+
+terminal=alacritty

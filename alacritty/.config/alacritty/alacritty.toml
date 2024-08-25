@@ -24,7 +24,7 @@ opacity = 0.9
 # From https://github.com/alacritty/alacritty-theme
 
 [colors.primary]
-# background = '#2d353b'
+# background = '#232A2E'
 foreground = '#d3c6aa'
 
 # Normal colors

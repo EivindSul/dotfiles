@@ -20,3 +20,4 @@ set -x VISUAL nvim
 set -x MANPAGER "nvim +Man!"
 # set -x TASKRC "$HOME/.config/task/taskrc"
 # set -x TASKDATA "$HOME/.local/share/task"
+set -x XDG_CURRENT_DESKTOP Hyprland

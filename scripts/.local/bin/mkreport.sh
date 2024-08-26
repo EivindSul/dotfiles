@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# TODO: Make content in report comform to the name passed to this script.
+
 if [ -z $1 ] ; then
     echo "You need to provide a name for the folder."
     exit 1

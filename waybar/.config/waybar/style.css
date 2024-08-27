@@ -1,60 +1,39 @@
 /* based on chris titus hyprland config: https://github.com/ChrisTitusTech/hyprland-titus */
 * {
-    border: none;
-    border-radius: 0;
     font-family: Lekton Nerd Font Mono, monospace;
-    font-weight: bold;
     font-size: 16px;
     min-height: 0;
 }
 
 window#waybar {
-    /* background: rgba(45, 53, 59, 1); */
-    /* background: rgba(61, 72, 77, 1); */
-    background: rgba(35, 42, 46, 1);
-    color: #cdd6f4;
-}
-
-tooltip {
-    background: #2d353b;
-    border-radius: 10px;
-    border-width: 2px;
-    border-style: solid;
-    border-color: #11111b;
+    background: rgba(20, 15, 15, 0.8);
+    color: #D3C6AA;
 }
 
 #workspaces button {
     padding: 5px;
-    color: #313244;
+    color: #4D4C43;
     margin-right: 5px;
 }
 
 #workspaces button.active {
-    color: #a6adc8;
+    color: #D3C6AA;
 }
 
 #workspaces button.focused {
-    color: #a6adc8;
-    background: #eba0ac;
-    border-radius: 10px;
+    color: #D3C6AA;
+    background: #E67E80;
 }
 
 #workspaces button.urgent {
-    color: #11111b;
-    background: #a6e3a1;
-    border-radius: 10px;
+    color: #4D4C43;
+    background: #DBBC7F;
 }
 
 #workspaces button:hover {
-    background: #11111b;
-    color: #cdd6f4;
-    border-radius: 10px;
+    color: #D699B6;
 }
 
-#custom-language,
-#custom-updates,
-#custom-caffeine,
-#custom-weather,
 #window,
 #clock,
 #battery,
@@ -66,84 +45,29 @@ tooltip {
 #memory,
 #temperature,
 #backlight {
-    background: #2d353b;
     padding: 0px 10px;
-    margin: 3px 0px;
-    margin-top: 10px;
-    border: 1px solid #181825;
 }
 
 #tray {
-    border-radius: 10px;
     margin-right: 10px;
 }
 
-#workspaces {
-    background: #2d353b;
-    border-radius: 10px;
-    margin-left: 10px;
-    padding-right: 0px;
-    padding-left: 5px;
-}
-
-#custom-caffeine {
-    color: #89dceb;
-    border-radius: 10px 0px 0px 10px;
-    border-right: 0px;
-    margin-left: 10px;
-}
-
-#custom-language {
-    color: #f38ba8;
-    border-left: 0px;
-    border-right: 0px;
-}
-
-#custom-updates {
-    color: #f5c2e7;
-    border-radius: 10px 0px 0px 10px;
-    border-left: 0px;
-    border-right: 0px;
-}
-
 #window {
-    border-radius: 10px;
     margin-left: 60px;
     margin-right: 60px;
 }
 
 #clock {
-    color: #fab387;
-    border-radius: 0px 10px 10px 0px;
+    color: #E69875;
     margin-right: 5px;
-}
-
-#network {
-    color: #f9e2af;
-    border-left: 0px;
-    border-right: 0px;
 }
 
 #pulseaudio {
-    color: #89b4fa;
-    border-radius: 10px 0px 0px 10px;
-}
-
-#pulseaudio.microphone {
-    color: #cba6f7;
-    border-radius: 0px 10px 10px 0px;
-    border-left: 0px;
-    border-right: 0px;
-    margin-right: 5px;
+    color: #7FBBB3;
 }
 
 #battery {
-    color: #a6e3a1;
+    color: #A7C080;
 }
 
-#custom-weather {
-    border-radius: 0px 10px 10px 0px;
-    border-right: 0px;
-    margin-left: 0px;
-}
 

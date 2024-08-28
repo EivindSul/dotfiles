@@ -6,7 +6,8 @@
 }
 
 window#waybar {
-    background: rgba(20, 15, 15, 0.8);
+    /* background: rgba(20, 15, 15, 0.8); */ /* Brown ish */
+    background: rgba(35, 42, 46, 0.9); /* bg_dim */
     color: #D3C6AA;
 }
 

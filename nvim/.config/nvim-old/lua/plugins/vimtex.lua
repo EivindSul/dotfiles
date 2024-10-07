@@ -4,49 +4,35 @@ return {
 		enabled = true,
 		lazy = false,
 		init = function()
-			vim.g.vimtex_view_method = "zathura"
+			vim.g.vimtex_view_method = 'zathura'
 			vim.g.vimtex_quickfix_enabled = 1
 			vim.g.vimtex_syntax_enabled = 1
 			vim.g.vimtex_quickfix_mode = 0
 		end,
-		config = function()
-			vim.keymap.set("n", "<leader>Ti", "<plug>(vimtex-info)", { desc = "VimTeX info" })
-			vim.keymap.set("n", "<leader>TI", "<plug>(vimtex-info-full)", { desc = "VimTeX info full" })
-			vim.keymap.set("n", "<leader>Tt", "<plug>(vimtex-toc-open)", { desc = "Show table of contents" })
-			vim.keymap.set("n", "<leader>TT", "<plug>(vimtex-toc-toggle)", { desc = "Toggle table of contents" })
-			vim.keymap.set("n", "<leader>Tq", "<plug>(vimtex-log)", { desc = "Show log" })
-			vim.keymap.set("n", "<leader>Tv", "<plug>(vimtex-view)", { desc = "Open pdf viewer" })
-			vim.keymap.set("n", "<leader>Tr", "<plug>(vimtex-reverse-search)", { desc = "Reverse search" })
-			vim.keymap.set("n", "<leader>Tl", "<plug>(vimtex-compile)", { desc = "Toggle continuous compiler" })
-			vim.keymap.set("n", "<leader>Tk", "<plug>(vimtex-stop)", { desc = "Stop continuous compiler" })
-			vim.keymap.set("n", "<leader>TL", "<plug>(vimtex-compile-ss)", { desc = "Compile document" })
-			vim.keymap.set("n", "<leader>TK", "<plug>(vimtex-stop-all)", { desc = "Stop compilation for all files" })
-			vim.keymap.set("n", "<leader>Te", "<plug>(vimtex-errors)", { desc = "Open error window" })
-			vim.keymap.set(
-				"n",
-				"<leader>To",
-				"<plug>(vimtex-compile-output)",
-				{ desc = "Open file where output is directed" }
-			)
-			vim.keymap.set("n", "<leader>Tg", "<plug>(vimtex-status)", { desc = "Show compilation status" })
-			vim.keymap.set(
-				"n",
-				"<leader>TG",
-				"<plug>(vimtex-status-all)",
-				{ desc = "Show compilation status for all files" }
-			)
-			vim.keymap.set("n", "<leader>Tc", "<plug>(vimtex-clean)", { desc = "Clean auxillary files" })
-			vim.keymap.set("n", "<leader>TC", "<plug>(vimtex-clean-full)", { desc = "Clean all output" })
-			vim.keymap.set("n", "<leader>Tm", "<plug>(vimtex-imaps-list)", { desc = "Show insert-mode mappings" })
-			vim.keymap.set("n", "<leader>Tx", "<plug>(vimtex-reload)", { desc = "Reload VimTeX" })
-			vim.keymap.set("n", "<leader>TX", "<plug>(vimtex-reload-state)", { desc = "Reload current buffer" })
-			vim.keymap.set("n", "<leader>Ts", "<plug>(vimtex-toggle-main)", { desc = "Set file as main" })
-			vim.keymap.set(
-				"n",
-				"<leader>Ta",
-				"<plug>(vimtex-context-menu)",
-				{ desc = "Show context menu on item below cursor" }
-			)
+		config = function ()
+			local map = require("helpers.keys").map
+			map("n", "<leader>Ti", "<plug>(vimtex-info)", "VimTeX info")
+			map("n", "<leader>TI", "<plug>(vimtex-info-full)", "VimTeX info full")
+			map("n", "<leader>Tt", "<plug>(vimtex-toc-open)", "Show table of contents")
+			map("n", "<leader>TT", "<plug>(vimtex-toc-toggle)", "Toggle table of contents")
+			map("n", "<leader>Tq", "<plug>(vimtex-log)", "Show log")
+			map("n", "<leader>Tv", "<plug>(vimtex-view)", "Open pdf viewer")
+			map("n", "<leader>Tr", "<plug>(vimtex-reverse-search)", "Reverse search")
+			map("n", "<leader>Tl", "<plug>(vimtex-compile)", "Toggle continuous compiler")
+			map("n", "<leader>Tk", "<plug>(vimtex-stop)", "Stop continuous compiler")
+			map("n", "<leader>TL", "<plug>(vimtex-compile-ss)", "Compile document")
+			map("n", "<leader>TK", "<plug>(vimtex-stop-all)", "Stop compilation for all files")
+			map("n", "<leader>Te", "<plug>(vimtex-errors)", "Open error window")
+			map("n", "<leader>To", "<plug>(vimtex-compile-output)", "Open file where output is directed")
+			map("n", "<leader>Tg", "<plug>(vimtex-status)", "Show compilation status")
+			map("n", "<leader>TG", "<plug>(vimtex-status-all)", "Show compilation status for all files")
+			map("n", "<leader>Tc", "<plug>(vimtex-clean)", "Clean auxillary files")
+			map("n", "<leader>TC", "<plug>(vimtex-clean-full)", "Clean all output")
+			map("n", "<leader>Tm", "<plug>(vimtex-imaps-list)", "Show insert-mode mappings")
+			map("n", "<leader>Tx", "<plug>(vimtex-reload)", "Reload VimTeX")
+			map("n", "<leader>TX", "<plug>(vimtex-reload-state)", "Reload current buffer")
+			map("n", "<leader>Ts", "<plug>(vimtex-toggle-main)", "Set file as main")
+			map("n", "<leader>Ta", "<plug>(vimtex-context-menu)", "Show context menu on item below cursor")
 			-- map("nx", "<leader>tL", "<plug>(vimtex-compile-selected)", "Compile the selected part of the current file")
 			-- map("n", "dse", "<plug>(vimtex-env-delete)", "placeholder")
 			-- map("n", "dsc", "<plug>(vimtex-cmd-delete)", "placeholder")
@@ -102,6 +88,6 @@ return {
 			-- map("nxo", "[/", "<plug>(vimtex-[/", "placeholder")
 			-- map("nxo", "[*", "<plug>(vimtex-[star", "placeholder")
 			-- map("n", "K", "<plug>(vimtex-doc-package)", "placeholder")
-		end,
+		end
 	},
 }

@@ -15,6 +15,7 @@ style = "Italic"
 
 [font.normal]
 family = "Lekton Nerd Font Mono"
+# family = "Jetbrains Mono Nerd Font"
 style = "Regular"
 
 [window]

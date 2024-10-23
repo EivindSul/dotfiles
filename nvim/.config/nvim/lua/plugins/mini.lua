@@ -73,8 +73,8 @@ return {
 				-- By default surrounds with space and possibly prepends with icon
 				-- format = nil,
 				format = function(buf_id, label)
-					local changed = vim.bo[buf_id].modified and "[+] " or ""
-					return changed .. MiniTabline.default_format(buf_id, label)
+					local changed = vim.bo[buf_id].modified and "[+]" or ""
+					return MiniTabline.default_format(buf_id, label) .. changed
 				end,
 
 				-- Whether to set Vim's settings for tabline (make it always shown and

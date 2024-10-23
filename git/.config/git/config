@@ -1,0 +1,14 @@
+[user]
+	email = eivindsulen2002@gmail.com
+	name = Eivind Sulen
+[merge]
+	tool = nvimdiff
+[mergetool]
+	prompt = false
+	keepBackup = false
+[mergetool "nvimdiff"]
+	layout = "LOCAL,BASE,REMOTE / MERGED"
+[core]
+	editor = nvim
+[init]
+	defaultBranch = main

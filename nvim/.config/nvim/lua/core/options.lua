@@ -45,7 +45,7 @@ vim.opt.inccommand = "split"
 vim.opt.cursorline = true
 vim.opt.cursorlineopt = "number"
 
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 8
 
 -- Highlight when yanking (copying) text
 --  Try it with `yap` in normal mode

@@ -52,3 +52,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 		vim.highlight.on_yank()
 	end,
 })
+
+vim.api.nvim_create_autocmd("TermOpen", {
+	desc = "Disable line numbers for terminals",
+	group = vim.api.nvim_create_augroup("term-visuals", { clear = true }),
+	callback = function()
+		vim.opt_local.number = false
+		vim.opt_local.relativenumber = false
+		vim.opt_local.signcolumn = "no"
+		-- vim.api.nvim_command("startinsert")
+	end,
+})

@@ -60,6 +60,6 @@ vim.api.nvim_create_autocmd("TermOpen", {
 		vim.opt_local.number = false
 		vim.opt_local.relativenumber = false
 		vim.opt_local.signcolumn = "no"
-		-- vim.api.nvim_command("startinsert")
+		vim.opt_local.scrolloff = 0
 	end,
 })

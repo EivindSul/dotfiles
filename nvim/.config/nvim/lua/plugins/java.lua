@@ -6,7 +6,7 @@ return {
 			"williamboman/mason.nvim",
 			opts = { ensure_installed = { "jdtls", "java-debug-adapter", "java-test" } },
 		},
-		enabled = true,
+		enabled = false,
 		-- Config stolen from https://github.com/qmi03/nvim_config/blob/master/lua/plugins/java.lua
 		ft = { "java" },
 		config = function()

@@ -1,4 +1,3 @@
-/* based on chris titus hyprland config: https://github.com/ChrisTitusTech/hyprland-titus */
 * {
     font-family: Lekton Nerd Font Mono, monospace;
     font-size: 16px;
@@ -33,7 +32,7 @@ window#waybar {
 }
 
 #workspaces button:hover {
-    color: #D699B6;
+    color: #A7C080;
 }
 
 #window,
@@ -43,9 +42,6 @@ window#waybar {
 #network,
 #workspaces,
 #tray,
-#cpu,
-#memory,
-#temperature,
 #backlight {
     padding: 0px 10px;
 }

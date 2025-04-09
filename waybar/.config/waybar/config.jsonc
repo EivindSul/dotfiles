@@ -1,7 +1,7 @@
 // -*- mode: jsonc -*-
 {
-    "layer": "bottom", // Waybar at top layer
-    "spacing": 2, // Gaps between modules (4px)
+    "layer": "bottom",
+    "spacing": 2,
 
     // Choose the order of the modules
     "modules-left": [
@@ -12,9 +12,6 @@
         "hyprland/window"
     ],
     "modules-right": [
-        // "cpu",
-        // "memory",
-        // "temperature",
         "network",
         "backlight",
         "pulseaudio",
@@ -22,7 +19,6 @@
         "clock",
         "tray"
     ],
-    // Modules configuration
     "tray": {
         // "icon-size": 21,
         "spacing": 10
@@ -30,21 +26,6 @@
     "clock": {
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
         "format-alt": "{:%d-%m-%Y}"
-    },
-    "cpu": {
-        "format": "{usage}% ",
-        "tooltip": false
-    },
-    "memory": {
-        "format": "{}% "
-    },
-    "temperature": {
-        // "thermal-zone": 2,
-        // "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
-        "critical-threshold": 80,
-        // "format-critical": "{temperatureC}°C {icon}",
-        "format": "{temperatureC}°C {icon}",
-        "format-icons": ["", "", ""]
     },
     "backlight": {
         // "device": "acpi_video1",
@@ -59,7 +40,8 @@
         },
         "format": "{capacity}% {icon}",
         "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
+        // "format-charging": "{capacity}% ",
+        "format-charging": "{capacity}% ",
         "format-plugged": "{capacity}% ",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module

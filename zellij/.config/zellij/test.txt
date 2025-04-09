@@ -1,1 +1,0 @@
-hei dette e en test for zellij serialization.

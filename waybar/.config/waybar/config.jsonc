@@ -8,9 +8,9 @@
         "hyprland/workspaces",
         "custom/media"
     ],
-    "modules-center": [
-        "hyprland/window"
-    ],
+    // "modules-center": [
+    //     "hyprland/window"
+    // ],
     "modules-right": [
         "network",
         "backlight",

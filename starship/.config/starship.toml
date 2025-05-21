@@ -2,6 +2,7 @@ palette = "everforest"
 
 [shell]
 bash_indicator = "bash"
+zsh_indicator = "zsh"
 fish_indicator = ""
 style = "green bold"
 disabled = false

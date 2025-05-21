@@ -63,3 +63,4 @@ vim.api.nvim_create_autocmd("TermOpen", {
 		vim.opt_local.scrolloff = 0
 	end,
 })
+vim.filetype.add({ extension = { maude = "maude", als = "alloy" } })

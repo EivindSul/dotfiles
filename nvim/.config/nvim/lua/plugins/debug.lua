@@ -15,7 +15,18 @@ return {
 
 			require("dapui").setup()
 			-- require("dap-go").setup()
-			require("dap-python").setup("python3")
+			-- require("dap-python").setup("python3")
+			require("dap-python").setup(
+				"/home/eivind/Documents/skole/master/8sem/dat259/miniconda/conda/envs/snail/bin/python"
+			)
+			table.insert(require("dap").configurations.python, {
+				type = "python",
+				request = "launch",
+				name = "Debug driver.py with scratch.snail",
+				cwd = "/home/eivind/Documents/skole/master/8sem/dat259/snail/src",
+				module = "snail.driver",
+				args = { "/home/eivind/Documents/skole/master/8sem/dat259/snail/samples/scratch.snail" },
+			})
 
 			require("nvim-dap-virtual-text").setup()
 
@@ -28,7 +39,6 @@ return {
 			--     args = { "dap", "-l", "127.0.0.1:${port}" },
 			--   },
 			-- }
-
 			-- local elixir_ls_debugger = vim.fn.exepath "elixir-ls-debugger"
 			-- if elixir_ls_debugger ~= "" then
 			--   dap.adapters.mix_task = {
@@ -49,11 +59,11 @@ return {
 			--   }
 			-- end
 
-			vim.keymap.set("n", "<space>b", dap.toggle_breakpoint, { desc = "Toggle breakpoint" })
-			vim.keymap.set("n", "<space>gb", dap.run_to_cursor, { desc = "Debug: Run to cursor" })
+			vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, { desc = "Toggle breakpoint" })
+			vim.keymap.set("n", "<leader>dc", dap.run_to_cursor, { desc = "Debug: Run to cursor" })
 
 			-- Eval var under cursor
-			vim.keymap.set("n", "<space>?", function()
+			vim.keymap.set("n", "<leader>d?", function()
 				require("dapui").eval(nil, { enter = true })
 			end, { desc = "Eval var under cursor" })
 
@@ -64,18 +74,20 @@ return {
 			vim.keymap.set("n", "<F5>", dap.step_back, { desc = "dap.step_back" })
 			vim.keymap.set("n", "<F6>", dap.restart, { desc = "dap.restart" })
 
+			vim.keymap.set("n", "<leader>du", ui.toggle, { desc = "Toggle DAP UI" })
+
 			dap.listeners.before.attach.dapui_config = function()
 				ui.open()
 			end
 			dap.listeners.before.launch.dapui_config = function()
 				ui.open()
 			end
-			dap.listeners.before.event_terminated.dapui_config = function()
-				ui.close()
-			end
-			dap.listeners.before.event_exited.dapui_config = function()
-				ui.close()
-			end
+			-- dap.listeners.before.event_terminated.dapui_config = function()
+			-- 	ui.close()
+			-- end
+			-- dap.listeners.before.event_exited.dapui_config = function()
+			-- 	ui.close()
+			-- end
 		end,
 	},
 }

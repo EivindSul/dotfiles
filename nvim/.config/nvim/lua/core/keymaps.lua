@@ -13,6 +13,22 @@ vim.keymap.set("n", "<leader>rt", function()
 		vim.api.nvim_command("split +startinsert term://" .. shell)
 	end
 end, { desc = "Open terminal in split" })
+vim.keymap.set("n", "<leader>rr", function()
+	-- Gammel vimscript funkjon
+	-- vim.g.runnerbuffer = vim.fn.bufadd("runner")
+	-- Heller bruk denne: -- Den vim.api er mer modulær og stødig.
+	-- vim.g.runnerbuffer = vim.api.nvim_create_buf()
+	-- local bufnr = vim.fn.bufnr("runner")
+	-- vim.notify(tostring(bufnr))
+	-- vim.fn.bufadd
+	print("Not implemented")
+end, { desc = "Rerun" })
+vim.keymap.set("n", "<leader>rR", function()
+	print("Not implemented")
+end, { desc = "Run current file" })
+vim.keymap.set("n", "<leader>rw", function()
+	print("Not implemented")
+end, { desc = "Rerun on write" })
 
 -- Free up arrow keys
 vim.keymap.set("n", "<left>", '<cmd>echo "Use h to move!!"<CR>')

@@ -42,12 +42,27 @@ vim.keymap.set("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right win
 vim.keymap.set("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
 
+-- Move windows around
+vim.keymap.set("n", "<C-S-h>", "<C-w>H", { desc = "Move window to the left" })
+vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
+vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the bottom" })
+vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the top" })
+
 -- Scroll half pages and center cursor in the middle of the screen
 vim.keymap.set("n", "<C-u>", "<C-u>zz", { desc = "Scroll half page up" })
 vim.keymap.set("n", "<C-d>", "<C-d>zz", { desc = "Scroll half page down" })
 
--- Diagnostic keymaps
+-- LSP/Diagnostic keymaps. Mostly defaults with added description
+vim.keymap.set("n", "grn", vim.lsp.buf.rename, { desc = "Rename symbol" })
+vim.keymap.set("n", "gra", vim.lsp.buf.code_action, { desc = "Code action" })
+vim.keymap.set("n", "grr", vim.lsp.buf.references, { desc = "List all references" })
+vim.keymap.set("n", "gri", vim.lsp.buf.implementation, { desc = "List all implementations" })
+vim.keymap.set("n", "grt", vim.lsp.buf.type_definition, { desc = "Jump to type definition" })
+vim.keymap.set("n", "grd", vim.lsp.buf.definition, { desc = "Jump to definition" })
+vim.keymap.set("n", "grD", vim.lsp.buf.declaration, { desc = "Jump to declaration" })
+vim.keymap.set("n", "grf", vim.lsp.buf.format, { desc = "Format current buffer" })
 vim.keymap.set("n", "gx", vim.diagnostic.open_float, { desc = "Show diagnostics under cursor" })
+vim.keymap.set("n", "gO", vim.lsp.buf.document_symbol, { desc = "List all symbols in current buffer" })
 
 -- Navigate buffers
 vim.keymap.set("n", "<S-l>", ":bnext<CR>", { desc = "Change view to next buffer" })

@@ -20,6 +20,7 @@ style = "Regular"
 
 [window]
 opacity = 0.9
+option_as_alt = "OnlyLeft"
 
 # Colors (Everforest Dark)
 # From https://github.com/alacritty/alacritty-theme

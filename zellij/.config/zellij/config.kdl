@@ -1,21 +1,7 @@
 keybinds clear-defaults=true {
     normal {
-        bind "g" {
-            Run "lazygit" {
-                floating true
-                x "5%"
-                y "5%"
-                width "90%"
-                height "90%"
-            };
-            SwitchToMode "Locked"
-        }
-        bind "?" {
-            LaunchOrFocusPlugin "forgot" {
-                floating true
-            };
-            SwitchToMode "Locked"
-        }
+        bind "æ" { NextSwapLayout; }
+        bind "ø" { PreviousSwapLayout; }
 
         bind "o" { SwitchToMode "session"; }
         bind "s" { SwitchToMode "scroll"; }
@@ -274,7 +260,8 @@ keybinds clear-defaults=true {
 plugins {
     about location="zellij:about"
     compact-bar location="zellij:compact-bar"
-    zjstatus location="file:/home/eivind/.config/zellij/plugins/zjstatus.wasm" {
+    // zjstatus location="file:/home/eivind/.config/zellij/plugins/zjstatus.wasm" {
+    zjstatus location="file:$HOME/.config/zellij/plugins/zjstatus.wasm" {
 
         color_bg_dim "#232A2E" // Dimmed Background
         color_bg0 "#2D353B" // Default Background
@@ -350,7 +337,7 @@ plugins {
         tab_floating_indicator "(W) "
         tab_fullscreen_indicator "[F] "
     }
-    zjstatus-bottom location="file:/home/eivind/.config/zellij/plugins/zjstatus.wasm" {
+    zjstatus-bottom location="file:$HOME/.config/zellij/plugins/zjstatus.wasm" {
 
         color_bg_dim "#232A2E" // Dimmed Background
         color_bg0 "#2D353B" // Default Background
@@ -426,7 +413,7 @@ plugins {
         tab_floating_indicator "(W) "
         tab_fullscreen_indicator "[F] "
     }
-    zjstatus-top location="file:/home/eivind/.config/zellij/plugins/zjstatus.wasm" {
+    zjstatus-top location="file:$HOME/.config/zellij/plugins/zjstatus.wasm" {
 
         color_bg_dim "#232A2E" // Dimmed Background
         color_bg0 "#2D353B" // Default Background

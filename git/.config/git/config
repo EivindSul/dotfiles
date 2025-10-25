@@ -1,14 +1,54 @@
 [user]
+	name = EivindSul
 	email = eivindsulen2002@gmail.com
-	name = Eivind Sulen
+[core]
+	editor = nvim
+	preloadindex = true
+	pager = delta
 [merge]
 	tool = nvimdiff
+	conflictStyle = zdiff3
 [mergetool]
 	prompt = false
 	keepBackup = false
 [mergetool "nvimdiff"]
 	layout = "LOCAL,BASE,REMOTE / MERGED"
-[core]
-	editor = nvim
+[interactive]
+	diffFilter = delta --color-only
+	singlekey = true
+[delta]
+	navigate = true
+	dark = true
+
 [init]
 	defaultBranch = main
+[status]
+	branch = true
+	showStash = true
+	showUntrackedFiles = all
+[diff]
+	context = 3
+	renames = copies
+	interHunkContext = 10
+[commit]
+	template = ~/.config/git/commit-template
+	verbose = true
+[push]
+	autoSetupRemote = true
+	default = current
+[pull]
+	default = current
+[rebase]
+	autoStash = true
+	missingCommitsCheck = warn
+[log]
+	abbrevCommits = true
+
+[url "git@github.com:"]
+	insteadOf = "gh:"
+[url "git@github.com:EivindSul/"]
+	insteadOf = "ghe:"
+[url "git@codeberg.org:/"]
+	insteadOf = "cb:"
+[url "git@codeberg.org:EivindSul/"]
+	insteadOf = "cbe:"

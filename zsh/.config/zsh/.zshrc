@@ -8,6 +8,7 @@ fi
 
 # https://thevaluable.dev/zsh-install-configure-mouseless/
 # https://grml.org/zsh/zsh-lovers.html
+# https://github.com/KulkarniKaustubh/dotfiles/blob/main/zsh/.zshrc
 
 # - - - - - - - - - - - - - - - EXTERNAL SCRIPTS - - - - - - - - - - - - - - - #
 
@@ -103,9 +104,24 @@ fi
 
 alias cp='cp -i'
 alias mv='mv -i'
-if command -v trash >/dev/null 2>&1; then
-	alias rm='echo Use trash-put, dummy.; false'
-fi
+
+alias gs='git status --short'
+alias gd='git diff --output-indicator-new=" " --output-indicator-old=" "'
+alias gds='git diff --output-indicator-new=" " --output-indicator-old=" " --staged'
+
+alias ga='git add'
+alias gap='git add --patch'
+alias gc='git commit'
+
+alias gP='git push'
+alias gp='git pull'
+
+alias gl="git log --all --graph --pretty=format:'%C(magenta)%h %C(white) %an %ar%C(auto) %D%n%s%n'"
+alias gb='git branch'
+alias gba='git branch --all'
+
+alias gi='git init'
+alias gcl='git clone'
 
 # - - - - - - - - - - - - - - - FUNCTIONS - - - - - - - - - - - - - - - #
 

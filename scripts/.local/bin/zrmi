@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+# zrmi -> Zellij remove interactive (similar to zi for zoxide interactive)
+
+all_sessions=("$(zellij ls -n | grep EXITED | cut -d ' ' -f 1 )")
+
+to_delete=($(echo "${all_sessions[@]}" | fzf --multi))
+
+for session in "${to_delete[@]}"
+do
+	echo "Deleting $session"
+	zellij delete-session "$session"
+done
+
+
+# session="$(echo ${sessions[@]} | fzf --multi)"
+#
+# echo "selection: $session"
+
+
+# echo $sessions

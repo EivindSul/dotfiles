@@ -16,8 +16,6 @@ eval "$(starship init zsh)"
 
 eval "$(zoxide init --cmd cd zsh)"
 
-# source <(zellij setup --generate-completion zsh)
-
 # eval "$(uv generate-shell-completion zsh)"
 
 source <(fzf --zsh)
@@ -26,8 +24,24 @@ export FZF_CTRL_R_OPTS='--style minimal --color 16 --info inline --no-sort --no-
 
 # - - - - - - - - - - - - - - - OPTIONS - - - - - - - - - - - - - - - #
 
+bindkey -a -r '\e' # For insert
+bindkey -r '\e' # For normal
+
+bindkey -M vicmd '^d' vi-cmd-mode
+bindkey -M viins '^d' vi-cmd-mode
+
+bindkey -M vicmd 'i' vi-insert
+bindkey -M vicmd 'I' vi-insert-bol
+bindkey -M vicmd 'a' vi-add-next
+bindkey -M vicmd 'A' vi-add-eol
+
 setopt auto_cd
 setopt auto_pushd
+
+# Edit current line in vim
+autoload -U edit-command-line
+zle -N edit-command-line
+bindkey '^x^e' edit-command-line
 
 # - - - - - - - - - - - - - - - COMPLETIONS - - - - - - - - - - - - - - - #
 
@@ -44,7 +58,8 @@ zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*:descriptions' format "$fg[yellow]%B-- %d --%b%f"
 zstyle ':completion:*:messages' format '%d'
-zstyle ':completion:*:warnings' format "$fg[red]No matches for:$reset_color %d"
+# zstyle ':completion:*:warnings' format "$fg[red]No matches for:$reset_color %d"
+zstyle ':completion:*:warnings' format ""
 zstyle ':completion:*:corrections' format '%B%d (errors: %e)%b'
 zstyle ':completion:*' group-name ''
 
@@ -59,7 +74,6 @@ bindkey -M menuselect '\e' send-break
 bindkey -M viins '^n' menu-complete
 bindkey -M viins '^p' reverse-menu-complete
 
-
 # - - - - - - - - - - - - - - - ALIASES - - - - - - - - - - - - - - - #
 
 alias zs="source $ZDOTDIR/.zshrc"
@@ -67,6 +81,15 @@ alias zs="source $ZDOTDIR/.zshrc"
 alias ...='../..'
 alias ....='../../..'
 alias .....='../../../..'
+
+# print full path to one or more files
+pwd() {
+	if [[ "$#" -eq 0 ]]; then
+		echo "$PWD"
+		return
+	fi
+	printf "$PWD/%s\n" "$@"
+}
 
 if command -v fzf >/dev/null 2>&1; then
 	alias mvd='ls ~/Downloads/ | fzf --multi | xargs -I {} mv ~/Downloads/{} .'
@@ -102,6 +125,23 @@ else
 	alias la='ls -la'
 fi
 
+if command -v brew >/dev/null 2>&1; then
+	function brewup () {
+		echo "Running \"brew update\"..."
+		if ! brew update; then
+			echo "Failed to update!"
+			return
+		fi
+		echo "Done with update."
+		echo "Running \"brew upgrade\"..."
+		if ! brew upgrade; then
+			echo "Failed to upgrade!"
+			return
+		fi
+		echo "Done with upgrade."
+	}
+fi
+
 alias cp='cp -i'
 alias mv='mv -i'
 
@@ -122,6 +162,22 @@ alias gba='git branch --all'
 
 alias gi='git init'
 alias gcl='git clone'
+
+if [ ! -z $ZELLIJ ]; then
+	function zr () { zellij run --name "$*" -- zsh -ic "$*";}
+	function zrf () { zellij run --name "$*" --floating -- zsh -ic "$*";}
+	function zri () { zellij run --name "$*" --in-place -- zsh -ic "$*";}
+	function ze () { zellij edit "$*";}
+	function zef () { zellij edit --floating "$*";}
+	function zei () { zellij edit --in-place "$*";}
+	function zpipe () { 
+	  if [ -z "$1" ]; then
+		zellij pipe;
+	  else 
+		zellij pipe -p $1;
+	  fi
+	}
+fi
 
 # - - - - - - - - - - - - - - - FUNCTIONS - - - - - - - - - - - - - - - #
 
@@ -177,8 +233,14 @@ function y() {
 	rm -f -- "$tmp"
 }
 
+# - - - - - - - - - - - - - - - MAC - - - - - - - - - - - - - - - #
+export HOMEBREW_NO_ENV_HINTS=1
+
 # - - - - - - - - - - - - - - - MISC - - - - - - - - - - - - - - - #
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.local/opt/sdkman"
+[[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ]] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+export PATH="/opt/homebrew/opt/openjdk@21/bin:$PATH"
+
+. "$HOME/.local/bin/env"

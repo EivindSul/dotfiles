@@ -27,9 +27,19 @@
 	showStash = true
 	showUntrackedFiles = all
 [diff]
+	tool = nvim_difftool
 	context = 3
 	renames = copies
 	interHunkContext = 10
+[difftool "nvim_difftool"]
+	cmd = nvim \
+		-c \"packadd nvim.difftool\" \
+		-c \"DiffTool $LOCAL $REMOTE\" \
+		-c \"set norelativenumber\" \
+		-c \"set nonumber\" \
+		-c \"set signcolumn=\"no\"\" \
+		-c \"set foldcolumn=\"no\"\"
+
 [commit]
 	template = ~/.config/git/commit-template
 	verbose = true

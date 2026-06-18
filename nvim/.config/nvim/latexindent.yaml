@@ -1,0 +1,7 @@
+modifyLineBreaks:
+  textWrapOptions:
+    columns: 80
+    huge: overflow
+    tabStopChar: " "
+  oneSentencePerLine:
+    manipulateSentences: 0

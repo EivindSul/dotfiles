@@ -19,6 +19,7 @@ keybinds clear-defaults=true {
         bind "n" { NewPane; SwitchToMode "locked"; }
         bind "v" { NewPane "right"; SwitchToMode "locked"; }
         bind "s" { NewPane "down"; SwitchToMode "locked"; }
+        bind "S" { NewPane "stacked"; SwitchToMode "locked"; }
         bind "x" { CloseFocus; SwitchToMode "locked"; }
 
         bind "r" { SwitchToMode "renamepane"; PaneNameInput 0; }
@@ -82,22 +83,13 @@ keybinds clear-defaults=true {
         bind "n" { MovePane; }
         bind "N" { MovePaneBackwards; }
 
-        bind "B" { BreakPaneLeft; }
-        bind "b" { BreakPaneRight; }
+        bind "q" { BreakPaneLeft; }
+        bind "e" { BreakPaneRight; }
         bind "w" { TogglePaneEmbedOrFloating; }
         bind "i" { TogglePanePinned; }
 
         bind "+" { Resize "Increase"; }
         bind "-" { Resize "Decrease"; }
-
-        bind "Alt h" { Resize "Increase left"; }
-        bind "Alt j" { Resize "Increase down"; }
-        bind "Alt k" { Resize "Increase up"; }
-        bind "Alt l" { Resize "Increase right"; }
-        bind "Alt H" { Resize "Decrease left"; }
-        bind "Alt J" { Resize "Decrease down"; }
-        bind "Alt K" { Resize "Decrease up"; }
-        bind "Alt L" { Resize "Decrease right"; }
 
         bind "m" { SwitchToMode "normal"; }
     }
@@ -110,6 +102,8 @@ keybinds clear-defaults=true {
         bind "N" { SwitchToMode "search"; }
 
         bind "s" { SwitchToMode "normal"; }
+
+        bind "Alt c" { Copy; }
     }
     search {
         bind "n" { Search "down"; }
@@ -143,16 +137,30 @@ keybinds clear-defaults=true {
             SwitchToMode "locked"
         }
         bind "a" {
-            LaunchOrFocusPlugin "zellij:about" {
+            LaunchOrFocusPlugin "about" {
                 floating true
                 move_to_focused_tab true
             };
             SwitchToMode "locked"
         }
+        bind "s" {
+            LaunchOrFocusPlugin "share" {
+                floating true
+                move_to_focused_tab true
+            };
+            SwitchToMode "locked"
+        }
+        bind "l" {
+            LaunchOrFocusPlugin "zellij:layout-manager" {
+                floating true
+                move_to_focused_tab true
+            };
+            SwitchToMode "Normal"
+        }
 
         bind "o" { SwitchToMode "normal"; }
     }
-    shared_among "normal" "locked" {
+    shared_among "normal" "locked" "move" "resize" {
         bind "Alt h" { MoveFocus "left"; }
         bind "Alt j" { MoveFocus "down"; }
         bind "Alt k" { MoveFocus "up"; }
@@ -164,6 +172,7 @@ keybinds clear-defaults=true {
         bind "Alt q" { GoToPreviousTab; }
         bind "Alt e" { GoToNextTab; }
         bind "Alt Tab" { ToggleTab; }
+
         bind "Alt 1" { GoToTab  1; }
         bind "Alt 2" { GoToTab  2; }
         bind "Alt 3" { GoToTab  3; }
@@ -174,7 +183,8 @@ keybinds clear-defaults=true {
         bind "Alt 8" { GoToTab  8; }
         bind "Alt 9" { GoToTab  9; }
         bind "Alt 0" { GoToTab 10; }
-
+    }
+    shared_among "normal" "locked" {
         bind "Alt f" { ToggleFocusFullscreen; }
         bind "Alt i" { TogglePanePinned; }
         bind "Alt w" { ToggleFloatingPanes; }
@@ -184,6 +194,8 @@ keybinds clear-defaults=true {
 
         bind "Alt æ" { NextSwapLayout; }
         bind "Alt ø" { PreviousSwapLayout; }
+
+        bind "Alt p" { TogglePaneInGroup; }
 
         // Hack: if a zellij run is present in a floating pinned pane,
         // This will rerun the command and return to the main pane.
@@ -259,6 +271,7 @@ keybinds clear-defaults=true {
 // changing these requires a restart to take effect
 plugins {
     about location="zellij:about"
+    share location="zellij:share"
     compact-bar location="zellij:compact-bar"
     // zjstatus location="file:/home/eivind/.config/zellij/plugins/zjstatus.wasm" {
     zjstatus location="file:$HOME/.config/zellij/plugins/zjstatus.wasm" {
@@ -509,6 +522,7 @@ plugins {
 // eg. "file:/path/to/my-plugin.wasm"
 // eg. "https://example.com/my-plugin.wasm"
 load_plugins {
+    "zellij:link"
 }
  
 // Use a simplified UI without special fonts (arrow glyphs)
@@ -618,7 +632,7 @@ pane_frames false
 // Enable automatic copying (and clearing) of selection when releasing mouse
 // Default: true
 // 
-// copy_on_select true
+copy_on_select false
  
 // Path to the default editor to use to edit pane scrollbuffer
 // Default: $EDITOR or $VISUAL

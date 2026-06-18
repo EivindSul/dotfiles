@@ -9,6 +9,10 @@ vim.opt.relativenumber = true
 vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 
+vim.opt.signcolumn = "yes:1"
+vim.opt.foldcolumn = "auto:1"
+vim.opt.foldlevelstart = 99
+
 vim.opt.mouse = "a"
 
 vim.opt.showmode = false
@@ -64,3 +68,40 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	end,
 })
 vim.filetype.add({ extension = { maude = "maude", als = "alloy" } })
+
+-- ui2
+require("vim._core.ui2").enable({
+	enable = true, -- Whether to enable or disable the UI.
+	msg = { -- Options related to the message module.
+		---@type 'cmd'|'msg' Default message target, either in the
+		---cmdline or in a separate ephemeral message window.
+		---@type string|table<string, 'cmd'|'msg'|'pager'> Default message target
+		---or table mapping |ui-messages| kinds and triggers to a target.
+		targets = "cmd",
+		cmd = { -- Options related to messages in the cmdline window.
+			height = 0.5, -- Maximum height while expanded for messages beyond 'cmdheight'.
+		},
+		dialog = { -- Options related to dialog window.
+			height = 0.5, -- Maximum height.
+		},
+		msg = { -- Options related to msg window.
+			height = 0.5, -- Maximum height.
+			timeout = 4000, -- Time a message is visible in the message window.
+		},
+		pager = { -- Options related to message window.
+			height = 1, -- Maximum height.
+		},
+	},
+})
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+	pattern = "lsp.log",
+	callback = function()
+		vim.cmd([[%s/\\n/\r/g]])
+		vim.cmd([[%s/\\t/\t/g]])
+		vim.cmd("normal! gg")
+	end,
+})
+
+vim.cmd.packadd("nvim.difftool")
+vim.cmd.packadd("nvim.undotree")

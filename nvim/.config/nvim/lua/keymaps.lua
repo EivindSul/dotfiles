@@ -13,19 +13,14 @@ vim.keymap.set("n", "<leader>rt", function()
 		vim.api.nvim_command("split +startinsert term://" .. shell)
 	end
 end, { desc = "Open terminal in split" })
-vim.keymap.set("n", "<leader>rr", function()
-	-- Gammel vimscript funkjon
-	-- vim.g.runnerbuffer = vim.fn.bufadd("runner")
-	-- Heller bruk denne: -- Den vim.api er mer modulær og stødig.
-	-- vim.g.runnerbuffer = vim.api.nvim_create_buf()
-	-- local bufnr = vim.fn.bufnr("runner")
-	-- vim.notify(tostring(bufnr))
-	-- vim.fn.bufadd
-	print("Not implemented")
-end, { desc = "Rerun" })
-vim.keymap.set("n", "<leader>rR", function()
-	print("Not implemented")
-end, { desc = "Run current file" })
+
+local zellij = require("custom.zellij")
+
+vim.keymap.set("n", "<leader>rR", zellij.prompt_and_run_command, { desc = "Start new runner" })
+vim.keymap.set("n", "<leader>rr", zellij.rerun_or_run, { desc = "Rerun" })
+vim.keymap.set("n", "<leader>rc", zellij.close_runner, { desc = "Close previous runner" })
+vim.keymap.set("n", "<leader>rm", "<cmd>make<CR>", { desc = ":make" })
+
 vim.keymap.set("n", "<leader>rw", function()
 	print("Not implemented")
 end, { desc = "Rerun on write" })
@@ -61,7 +56,8 @@ vim.keymap.set("n", "grt", vim.lsp.buf.type_definition, { desc = "Jump to type d
 vim.keymap.set("n", "grd", vim.lsp.buf.definition, { desc = "Jump to definition" })
 vim.keymap.set("n", "grD", vim.lsp.buf.declaration, { desc = "Jump to declaration" })
 vim.keymap.set("n", "grf", vim.lsp.buf.format, { desc = "Format current buffer" })
-vim.keymap.set("n", "gx", vim.diagnostic.open_float, { desc = "Show diagnostics under cursor" })
+-- Replaced by <C-w>d, try to get used to the new default
+-- vim.keymap.set("n", "gx", vim.diagnostic.open_float, { desc = "Show diagnostics under cursor" })
 vim.keymap.set("n", "gO", vim.lsp.buf.document_symbol, { desc = "List all symbols in current buffer" })
 
 -- Navigate buffers
@@ -71,3 +67,19 @@ vim.keymap.set("n", "<S-h>", ":bprevious<CR>", { desc = "Change view to previous
 -- Stay in indent mode
 vim.keymap.set("v", "<", "<gv")
 vim.keymap.set("v", ">", ">gv")
+
+-- Quickfixlist
+vim.keymap.set("n", "<leader>cn", "<cmd>cnext<CR>", { desc = "Next item" })
+vim.keymap.set("n", "<leader>cp", "<cmd>cprevious<CR>", { desc = "Previous item" })
+vim.keymap.set("n", "<leader>co", "<cmd>copen<CR>", { desc = "Open" })
+vim.keymap.set("n", "<leader>cc", "<cmd>cclose<CR>", { desc = "Close" })
+vim.keymap.set("n", "<leader>cd", vim.diagnostic.setqflist, { desc = "Populate with diagnostics" })
+
+vim.keymap.set("n", "<leader>ln", "<cmd>lnext<CR>", { desc = "Next item" })
+vim.keymap.set("n", "<leader>lp", "<cmd>lprevious<CR>", { desc = "Previous item" })
+vim.keymap.set("n", "<leader>lo", "<cmd>lopen<CR>", { desc = "Open" })
+vim.keymap.set("n", "<leader>lc", "<cmd>lclose<CR>", { desc = "Close" })
+vim.keymap.set("n", "<leader>ld", vim.diagnostic.setloclist, { desc = "Populate with diagnostics in current buffer" })
+
+-- Pasting in visual mode does not overwrite register
+vim.keymap.set("x", "p", "\"_dP")

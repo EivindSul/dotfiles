@@ -1,7 +1,7 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
-vim.g.have_nerd_font = true
+vim.g.have_nerd_font = false
 
 vim.opt.number = true
 vim.opt.relativenumber = true
@@ -67,7 +67,7 @@ vim.api.nvim_create_autocmd("TermOpen", {
 		vim.opt_local.scrolloff = 0
 	end,
 })
-vim.filetype.add({ extension = { maude = "maude", als = "alloy" } })
+vim.filetype.add({ extension = { tf = "terraform", maude = "maude", als = "alloy" } })
 
 -- ui2
 require("vim._core.ui2").enable({
